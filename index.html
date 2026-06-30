@@ -3,90 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chanapha | Portfolio & Code Sharing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Chanapha's Code Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=250&auto=format&fit=crop" alt="Chanapha's Profile" class="profile-img">
-        <h1>ชนาภา (Chanapha)</h1>
-        <p>Developer & Code Sharing Portfolio</p>
-        <div class="social-links">
-            <a href="https://github.com/YOUR_USERNAME" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="#" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:your-email@email.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+        <div class="container">
+            <h1>ชนาภา สายโค้ด (Chanapha Dev)</h1>
+            <p>Web Developer & Open Source Enthusiast ค่ะ</p>
+            <a href="https://github.com/YOUR-USERNAME" target="_blank" class="btn github-btn">ดู GitHub ของฉันค่ะ</a>
         </div>
     </header>
 
-    <div class="container">
-        <h2 class="section-title">คลังโค้ดและผลงานของฉัน</h2>
-        
-        <div class="search-container">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="searchInput" placeholder="พิมพ์เพื่อค้นหาชื่อโปรเจกต์ หรือเทคโนโลยี (เช่น Python, UI)...">
-        </div>
-        
-        <div class="project-grid" id="projectGrid">
+    <main class="container">
+        <h2>แฟ้มสะสมผลงาน & โค้ดโปรเจกต์ของชนาภา</h2>
+        <div class="project-grid">
             
             <div class="project-card">
-                <div class="card-content">
-                    <div class="project-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h3>Responsive E-Commerce UI</h3>
-                    <p>ระบบหน้าบ้านของร้านค้าออนไลน์ รองรับการแสดงผลทุกหน้าจอ (Mobile-First Design) พร้อมระบบตะกร้าสินค้าแบบจำลองค่ะ</p>
-                    <div class="tags">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">JavaScript</span>
-                    </div>
+                <h3>โปรเจกต์ระบบตรวจสภาพอากาศ</h3>
+                <p>แอปพลิเคชันดึงข้อมูล Weather API ด้วย JavaScript พยากรณ์อากาศล่วงหน้าได้ 3 วันค่ะ</p>
+                <div class="tech-stack">
+                    <span>HTML</span> <span>CSS</span> <span>JavaScript</span>
                 </div>
-                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" class="btn">
-                    <i class="fa-brands fa-github"></i> ดูซอร์สโค้ด
-                </a>
+                <a href="https://github.com/YOUR-USERNAME/weather-app" target="_blank" class="view-code">ดูซอร์สโค้ด &rarr;</a>
             </div>
 
             <div class="project-card">
-                <div class="card-content">
-                    <div class="project-icon"><i class="fa-solid fa-gears"></i></div>
-                    <h3>RESTful API Optimization</h3>
-                    <p>ชุดโค้ดสำหรับจัดการ Backend API ที่ช่วยลดเวลาในการดึงข้อมูลจากฐานข้อมูล และจัดระเบียบโครงสร้างให้อ่านง่ายค่ะ</p>
-                    <div class="tags">
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Express</span>
-                        <span class="tag">MongoDB</span>
-                    </div>
+                <h3>E-Commerce REST API</h3>
+                <p>ระบบหลังบ้านของร้านค้าออนไลน์ รองรับการจัดการสินค้า ตะกร้าสินค้า และระบบชำระเงินค่ะ</p>
+                <div class="tech-stack">
+                    <span>Node.js</span> <span>Express</span> <span>MongoDB</span>
                 </div>
-                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" class="btn">
-                    <i class="fa-brands fa-github"></i> ดูซอร์สโค้ด
-                </a>
+                <a href="https://github.com/YOUR-USERNAME/ecommerce-api" target="_blank" class="view-code">ดูซอร์สโค้ด &rarr;</a>
             </div>
 
             <div class="project-card">
-                <div class="card-content">
-                    <div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <h3>Python Data Dashboard</h3>
-                    <p>สคริปต์สำหรับดึงข้อมูลสถิติเว็บ และนำมาพล็อตเป็นกราฟเส้นเพื่อวิเคราะห์พฤติกรรมผู้ใช้งานแบบอัตโนมัติค่ะ</p>
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">Matplotlib</span>
-                    </div>
+                <h3>Smart Home Dashboard</h3>
+                <p>หน้าต่างควบคุมอุปกรณ์อัจฉริยะในบ้าน แสดงผลกราฟอุณหภูมิแบบ Real-time ค่ะ</p>
+                <div class="tech-stack">
+                    <span>React</span> <span>TypeScript</span> <span>Tailwind</span>
                 </div>
-                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" class="btn">
-                    <i class="fa-brands fa-github"></i> ดูซอร์สโค้ด
-                </a>
+                <a href="https://github.com/YOUR-USERNAME/smart-home" target="_blank" class="view-code">ดูซอร์สโค้ด &rarr;</a>
             </div>
 
         </div>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Chanapha. Built with <i class="fa-solid fa-heart" style="color: #ef4444;"></i> and GitHub Pages</p>
+        <p>&copy; 2026 Chanapha Dev. Built with GitHub Pages.</p>
     </footer>
 
-    <script src="script
+    <script src="script.js"></script>
+</body>
+</html>
