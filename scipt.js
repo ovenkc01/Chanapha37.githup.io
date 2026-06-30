@@ -1,36 +1,62 @@
-// รอให้หน้าเว็บโหลดโครงสร้างเสร็จเรียบร้อยก่อนทำงาน
+// เอฟเฟกต์พิมพ์ข้อความวิ่งอัตโนมัติ (Typing Effect) สำหรับชื่อคุณชนาภา
 document.addEventListener('DOMContentLoaded', () => {
-    
-    const searchInput = document.getElementById('searchInput');
-    const projectCards = document.querySelectorAll('.project-card');
+    const titleElement = document.querySelector('header h1');
+    const text = "ชนาภา สายโค้ด (Chanapha Dev)";
+    let index = 0;
 
-    // ตรวจจับเหตุการณ์เมื่อคุณชนาภาหรือผู้เยี่ยมชมพิมพ์ข้อความในช่องค้นหา
-    searchInput.addEventListener('input', (e) => {
-        const searchText = e.target.value.toLowerCase().trim();
-
-        projectCards.forEach(card => {
-            // ดึงข้อความจากหัวข้อ รายละเอียด และแท็กของแต่ละโปรเจกต์
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const description = card.querySelector('p').textContent.toLowerCase();
-            
-            // ดึงข้อมูลแท็กทั้งหมดในตัวการ์ดมารวมกัน
-            const tags = Array.from(card.querySelectorAll('.tag'))
-                              .map(tag => tag.textContent.toLowerCase())
-                              .join(' ');
-
-            // ตรวจสอบว่าคำที่พิมพ์ ตรงกับส่วนใดส่วนหนึ่งในคาร์ดหรือไม่
-            if (title.includes(searchText) || description.includes(searchText) || tags.includes(searchText)) {
-                // ถ้าตรง ให้แสดงการ์ดตามปกติ
-                card.style.display = 'flex';
-                card.style.opacity = '1';
-            } else {
-                // ถ้าไม่ตรง ให้ซ่อนการ์ดนั้นไปค่ะ
-                card.style.display = 'none';
-                card.style.opacity = '0';
+    if (titleElement) {
+        titleElement.textContent = ""; // ล้างตัวอักษรก่อนเริ่มเอฟเฟกต์
+        
+        function typeWriter() {
+            if (index < text.length) {
+                titleElement.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 100); // ตั้งค่าความเร็วการพิมพ์ตรงนี้ค่ะ
             }
-        });
-    });
-    
-    // ลูกเล่นเพิ่มเติม: คอนโซลต้อนรับเล็กๆ สำหรับนักพัฒนาที่เปิด Inspect ดูโค้ดคุณชนาภา
-    console.log("👋 ยินดีต้อนรับสู่คลังโค้ดของคุณชนาภาค่ะ!");
+        }
+        typeWriter();
+    }
+
+    // เรียกฟังก์ชันดึงข้อมูลดวงดาวจาก GitHub
+    fetchGitHubStars();
 });
+
+// ฟังก์ชันดึงจำนวน Star จาก GitHub API
+async function fetchGitHubStars() {
+    const githubUsername = "YOUR-USERNAME"; // เปลี่ยนเป็นชื่อ GitHub ของคุณชนาภาค่ะ
+    const repos = ['weather-app', 'ecommerce-api', 'smart-home']; 
+
+    for (const repo of repos) {
+        try {
+            const response = await fetch(`https://api.github.com/repos/${githubUsername}/${repo}`);
+            if (response.ok) {
+                const data = await response.json();
+                const starCount = data.stargazers_count;
+
+                // โชว์ยอดดาวถ้ามีคนมากดให้ค่ะ
+                if (starCount > 0) {
+                    updateProjectStarUI(repo, starCount);
+                }
+            }
+        } catch (error) {
+            console.error("เกิดข้อผิดพลาดในการดึงข้อมูลค่ะ:", error);
+        }
+    }
+}
+
+function updateProjectStarUI(repoName, stars) {
+    const projectLink = document.querySelector(`a[href*="${repoName}"]`);
+    if (projectLink) {
+        const card = projectLink.closest('.project-card');
+        const techStackContainer = card.querySelector('.tech-stack');
+
+        if (techStackContainer) {
+            const starTag = document.createElement('span');
+            starTag.style.backgroundColor = '#fff8c5';
+            starTag.style.color = '#9a6700';
+            starTag.style.border = '1px solid rgba(212,167,44,0.3)';
+            starTag.innerHTML = `⭐ ${stars} Stars`;
+            techStackContainer.appendChild(starTag);
+        }
+    }
+}
